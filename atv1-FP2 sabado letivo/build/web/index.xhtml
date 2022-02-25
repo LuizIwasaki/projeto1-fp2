@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>LOGIN</title>
+    </h:head>
+    <h:body>
+        <h2>Cadastre-se</h2>
+
+        <h:form id="cadastrar">
+            <p:growl id="growl" showDetail="true"  />
+            <div class="card">
+                <h:panelGrid id="grid" columns="1" cellpadding="2">
+                    <p:outputLabel for="username" value="#{controller.pessoa.nome}"/>
+                    <p:inputText id="username"/>
+                    <p:outputLabel for="passwd" value="#{controller.pessoa.senha}"/>
+                    <p:inputText id="passwd" type="password" />
+                </h:panelGrid>
+                
+                <p:commandButton value="Cadastrar" update="cadastrar" action="#{controller.cadastrar()}"/> 
+                <p:commandButton value="Exibir" update="cadastrar:growl" action="#{controller.teste()}"/> 
+            </div>
+        </h:form>
+         
+        <h2> Login </h2>
+        <h:form id="login">
+            <div class="card">
+                <h:panelGrid id="panel" columns="1" cellpadding="2">
+                    <p:outputLabel for="username" value=""/>
+                    <p:inputText id="username" value="#{controller.pessoa.nome}"/>
+                    <p:outputLabel for="passwd" value=""/>
+                    <p:inputText id="passwd" type="password" value="#{controller.pessoa.senha}"/>
+                </h:panelGrid>
+                
+                <p:commandButton value="Entrar" update=":cadastrar:growl" action="#{controller.verificar()}"/> 
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
